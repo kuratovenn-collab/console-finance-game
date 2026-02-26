@@ -8,5 +8,7 @@ add_executable(VisualNovelDice
         src/Player.h
         src/Player.h
         src/Player.h
+        src/Player.cpp
+        src/Event.h
         # Сюда добавь остальные .cpp файлы по мере роста проекта [cite: 13]
 )
