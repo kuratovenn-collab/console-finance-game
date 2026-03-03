@@ -12,13 +12,13 @@
 
 class Board {
 private:
-    std::vector<std::unique_ptr<Event>> cells;
-
+    std::vector<std::unique_ptr<Event>> events;
+	int lastEventID = -1;
 public:
     Board() = default;
 
     void addEvent(std::unique_ptr<Event> event);
-    Event& getEvent(int position);
+    Event& getRandomEvent();
     int size() const;
 };
 

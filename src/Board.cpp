@@ -9,14 +9,17 @@ void Board::addEvent(std::unique_ptr<Event> event) {
     cells.push_back(std::move(event));
 }
 
-Event& Board::getEvent(int position) {
-    if (position < 0 || position >= cells.size()) {
-        throw std::out_of_range("Position is out of board range");
-    }
-
-    return *cells[position];
+Event& Board::getRandomEvent() {
+	if (events.empty()) {
+		throw std::runtime_error("No events on board");
+	}
+	int newID;
+	do {
+		newID = std::rand() % events.size();
+	} while (newID == lastEventID);
+	lastEventID = newID;
+	return *events[newID];
 }
-
 int Board::size() const {
-    return static_cast<int>(cells.size());
+    return static_cast<int>(events.size());
 }
