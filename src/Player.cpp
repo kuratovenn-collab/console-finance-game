@@ -1,11 +1,11 @@
 #include "Player.h"
 
 Player::Player(std::string n, int startMoney, int startLives)
-    : name(std::move(n)), money(startMoney), position(0) {}
+    : name(std::move(n)), money(startMoney), position(0),lives(startLives) {}
 
 int Player::getMoney() const { return money; }
 int Player::getLives() const{return lives;}
-int Player::loseLives(int quantity) {
+void Player::loseLives(int quantity) {
     lives -= quantity;
 }
 

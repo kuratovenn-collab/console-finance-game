@@ -22,7 +22,7 @@
         bool spendMoney(int amount);
         int getPosition() const;
         int getLives() const;
-        int loseLives(int quanitiy);
+        void loseLives(int quantity);
         void move(int steps);
     };
 
