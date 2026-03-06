@@ -1,9 +1,15 @@
 #include "Player.h"
 
-Player::Player(std::string n, int startMoney)
+Player::Player(std::string n, int startMoney, int startLives)
     : name(std::move(n)), money(startMoney), position(0) {}
 
 int Player::getMoney() const { return money; }
+int Player::getLives() const{return lives;}
+int Player::loseLives(int quantity) {
+    lives -= quantity;
+}
+
+
 
 void Player::addMoney(int amount) { money += amount; }
 

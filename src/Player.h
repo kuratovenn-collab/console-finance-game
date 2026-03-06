@@ -13,13 +13,16 @@
         std::string name;
         int money;
         int position;
+        int lives;
 
     public:
-        Player(std::string n, int startMoney = 100);
+        Player(std::string n, int startMoney = 100,int startLives = 3);
         int getMoney() const;
         void addMoney(int amount);
         bool spendMoney(int amount);
         int getPosition() const;
+        int getLives() const;
+        int loseLives(int quanitiy);
         void move(int steps);
     };
 
