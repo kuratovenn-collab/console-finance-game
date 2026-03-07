@@ -12,13 +12,13 @@
 
 class TrapEvent : public Event {
 private:
-    std::string description_;
+    std::string title_;
     static constexpr float PENALTY_RATIO = 0.2f;
 
 public:
-    explicit TrapEvent(std::string desc);
+    explicit TrapEvent(std::string title);
 
-    void execute(Player& player) override;
-    std::string getDescription() const;
+    bool play(Player& player) override;
+    std::string getTitle() const override;
 };
 #endif //CONSOLE_FINANCE_GAME_TRAPEVENT_H
