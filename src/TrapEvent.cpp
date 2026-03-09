@@ -15,7 +15,7 @@ bool TrapEvent::play(Player& player) {
     player.loseLives(1);
 
     std::cout << "A heavy blow knocks you to the ground. While you are dazed, the bandits quickly ransack your belongings.\n";
-    std::cout<< "They seize" << lostGold << " gold coins and disappear into the darkness, leaving you bruised and weakened.\n";
+    std::cout<< "They seize " << lostGold << " gold coins and disappear into the darkness, leaving you bruised and weakened.\n";
     std::cout << "Current health: " << player.getLives() << " hearts. Current wealth: "<< player.getMoney() << " gold.\n";
 
     return true;

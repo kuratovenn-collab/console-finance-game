@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 void Board::addEvent(std::unique_ptr<Event> event) {
-    cells.push_back(std::move(event));
+    events.push_back(std::move(event));
 }
 
 Event& Board::getRandomEvent() {

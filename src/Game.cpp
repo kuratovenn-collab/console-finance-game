@@ -10,7 +10,8 @@ Game::Game(const std::string& playerName)
 }
 void Game::setupBoard() {
 for (int i = 0; i < 12; ++i) {
-        board.addEvent(std::make_unique<GamblinEvent>());
+        board.addEvent(std::make_unique<GamblingEvent>("Tavern Gambling"));
+		board.addEvent(std::make_unique<TrapEvent>("Bandit Ambush"));
     }
 }
 
@@ -24,7 +25,7 @@ void Game::run() {
 
         if (player.getLives() <= 0) {
             std::cout << "You lost all lives! Restarting from beginning...\n";
-            player.reset();
+            ///player.reset();
         }
     }
 
@@ -34,7 +35,7 @@ void Game::processTurn() {
 
 
    std::cout << "\nPress Enter to roll dice...";
-   std::cin.ignore();
+   std::cin.get();
 
 
    int roll = Dice::roll();
@@ -54,7 +55,7 @@ void Game::processTurn() {
 
    Event& event = board.getRandomEvent();
    std::cout << "Event: " << event.getTitle() << "\n";
-   event.trigger(player);
+   event.play(player);
 }
 void Game::checkEnding() {
 
