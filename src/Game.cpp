@@ -56,4 +56,20 @@ void Game::processTurn() {
    std::cout << "Event: " << event.getTitle() << "\n";
    event.trigger(player);
 }
+void Game::checkEnding() {
+
+
+   int money = player.getMoney();
+
+
+   std::cout << "\n=== GAME OVER ===\n";
+
+
+   if (money < 50)
+       std::cout << "poor.\n";
+   else if (money < 150)
+       std::cout << "not poor.\n";
+   else
+       std::cout << "rich\n";
+}
 
