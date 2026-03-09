@@ -1,26 +1,35 @@
 //
-// Created by MT Air on 07.03.2026.
+// Created by Maria Tumasova on 07.03.2026.
 //
+
 #include "TrapEvent.h"
 #include <iostream>
 
-TrapEvent::TrapEvent(std::string t) : title(std::move(t)) {}
+
+TrapEvent::TrapEvent(std::string title)
+    : title(std::move(title)) {}
 
 bool TrapEvent::play(Player& player) {
-    std::cout << "\n=== " << title << " ===\n";
-    std::cout << "Out of the thick fog, several silhouettes emerge. You are surrounded before you can reach for your weapon.\n";
+    std::cout << title ;
+    std::cout << "You've fallen into a trap!\n";
+    std::cout << "Bandits jump out from the shadows and beat you bloody...\n\n";
 
-    int lostGold = player.getMoney() / 5;
-    player.spendMoney(lostGold);
+    int currentLives = player.getLives();
     player.loseLives(1);
+    std::cout << "You lose 1 life! (" << currentLives << " -> " << player.getLives() << " )\n";
 
-    std::cout << "A heavy blow knocks you to the ground. While you are dazed, the bandits quickly ransack your belongings.\n";
-    std::cout<< "They seize " << lostGold << " gold coins and disappear into the darkness, leaving you bruised and weakened.\n";
-    std::cout << "Current health: " << player.getLives() << " hearts. Current wealth: "<< player.getMoney() << " gold.\n";
+    int currentMoney = player.getMoney();
+    int stolen = static_cast<int>(std::floor(currentMoney * 0.2f));
 
+    if (stolen > 0) {
+        player.spendMoney(stolen);
+        std::cout << "They steal " << stolen << " gold from you! (";
+        std::cout << currentMoney << " -> " << player.getMoney() << " \n";
+    } else {
+        std::cout << "You have no gold, so they just kick you and leave.\n";
+    }
     return true;
 }
-
 std::string TrapEvent::getTitle() const {
     return title;
 }
