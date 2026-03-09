@@ -19,7 +19,7 @@
         Player(std::string n, int startMoney = 100,int startLives = 3);
         int getMoney() const;
         void addMoney(int amount);
-        bool spendMoney(int amount);
+        void spendMoney(int amount);
         int getPosition() const;
         int getLives() const;
         void loseLives(int quantity);
