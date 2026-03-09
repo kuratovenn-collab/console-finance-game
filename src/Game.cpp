@@ -18,4 +18,15 @@ void Game::run() {
 
     std::cout << "Game started!\n";
 
+    while (player.getPosition() < board.size()) {
+
+        processTurn();
+
+        if (player.getLives() <= 0) {
+            std::cout << "You lost all lives! Restarting from beginning...\n";
+            player.reset();
+        }
+    }
+
+    checkEnding();
 }
