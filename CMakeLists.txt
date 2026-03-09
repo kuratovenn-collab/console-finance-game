@@ -13,4 +13,5 @@ add_executable(VisualNovelDice
         src/Player.cpp
         src/GamblingEvent.cpp
         src/TrapEvent.cpp
+        src/UI.h
 )
