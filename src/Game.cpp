@@ -30,3 +30,30 @@ void Game::run() {
 
     checkEnding();
 }
+void Game::processTurn() {
+
+
+   std::cout << "\nPress Enter to roll dice...";
+   std::cin.ignore();
+
+
+   int roll = Dice::roll();
+   std::cout << "You rolled: " << roll << "\n";
+
+
+   player.move(roll);
+
+
+   std::cout << "Current position: " << player.getPosition() << "\n";
+
+
+   if (player.getPosition() >= board.size()) {
+       return;
+   }
+
+
+   Event& event = board.getRandomEvent();
+   std::cout << "Event: " << event.getTitle() << "\n";
+   event.trigger(player);
+}
+
