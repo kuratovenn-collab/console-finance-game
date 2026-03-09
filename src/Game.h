@@ -7,7 +7,7 @@ class Game {
 private:
     Player player;
     Board board;
-    coid setupBoard;
+    void setupBoard;
     void processTurn;
     void checkEnding;
 public:
