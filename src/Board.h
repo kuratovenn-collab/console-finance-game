@@ -18,7 +18,7 @@ public:
     Board() = default;
 
     void addEvent(std::unique_ptr<Event> event);
-    Event& getRandomEvent();
+    Event& getEventAt(int index);
     int size() const;
 };
 
