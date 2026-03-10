@@ -11,17 +11,16 @@ PillEvent::PillEvent(std::string t) : title(std::move(t)) {}
 
 bool PillEvent::play(Player& player) {
     std::cout << "\n=== " << title << " ===\n";
+    int choice;
+    int redPrice = player.getMoney()/ 6;
+    int blueReward = player.getMoney() / 4;
 
-    int currentMoney = player.getMoney();
-    int redPrice = currentMoney / 6;
-    int blueReward = currentMoney / 4;
-
-    std::cout << "You meet a traveler. Choice:\n";
+    std::cout << "You meet a traveler. He has an offer for you, and he won't miss it until you accept it. Choice:\n";
     std::cout << "1. Red Pill: Recover 1 life, cost " << redPrice << " gold.\n";
     std::cout << "2. Blue Pill: Get " << blueReward << " gold, lose 1 life.\n";
     std::cin >> choice;
 
-    std::variant<int, std::string> eventResult;
+    Reward eventResult;
 
     if (choice == 1) {
         player.spendMoney(redPrice);

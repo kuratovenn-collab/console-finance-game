@@ -16,4 +16,6 @@ add_executable(VisualNovelDice
         src/Exceptions.h
         src/CorpseEvent.cpp
         src/CorpseEvent.h
+        src/PillEvent.cpp
+        src/PillEvent.h
 )

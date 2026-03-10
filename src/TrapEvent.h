@@ -1,5 +1,5 @@
 //
-// Created by Air on 07.03.2026.
+// Created by MT Air on 07.03.2026.
 //
 
 #ifndef CONSOLE_FINANCE_GAME_TRAPEVENT_H
