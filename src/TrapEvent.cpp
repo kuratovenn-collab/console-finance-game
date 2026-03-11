@@ -4,14 +4,14 @@
 
 #include "TrapEvent.h"
 #include <iostream>
-
+#include <cmath>
 
 TrapEvent::TrapEvent(std::string title)
     : title(std::move(title)) {}
 
 bool TrapEvent::play(Player& player) {
     std::cout << title ;
-    std::cout << "You've fallen into a trap!\n";
+    std::cout << " You've fallen into a trap!\n";
     std::cout << "Bandits jump out from the shadows and beat you bloody...\n\n";
 
     int currentLives = player.getLives();

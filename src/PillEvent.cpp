@@ -6,6 +6,11 @@
 #include "Event.h"
 #include <iostream>
 #include <variant>
+
+PillEvent::PillEvent(std::string t) : title(std::move(t)){}
+std::string PillEvent::getTitle() const {
+    return title;
+}
 bool PillEvent::play(Player& player) {
     std::cout << "\n=== " << title << " ===\n";
 
