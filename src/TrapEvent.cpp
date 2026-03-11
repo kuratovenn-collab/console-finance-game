@@ -18,6 +18,12 @@ bool TrapEvent::play(Player& player) {
     player.loseLives(1);
     std::cout << "You lose 1 life! (" << currentLives << " -> " << player.getLives() << " )\n";
 
+    if (player.getLives() <= 0) {
+        std::cout << "The injuries were fatal. Your soul belongs to the Abyss now" <<"\n";
+        std::cout << "=== GAME OVER ==="<<"\n";
+        return false;
+    }
+
     int currentMoney = player.getMoney();
     int stolen = static_cast<int>(std::floor(currentMoney * 0.2f));
 

@@ -50,7 +50,8 @@ bool PillEvent::play(Player& player) {
     }, eventResult);
 
     if (player.getLives() <= 0) {
-        std::cout << "Game over.\n";
+        std::cout << "The wrong pill... You should have considered your choice better"<<"\n";
+        std::cout << "=== GAME OVER ==="<<"\n";
         return false;
     }
     return true;
