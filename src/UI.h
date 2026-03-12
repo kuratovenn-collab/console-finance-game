@@ -13,7 +13,7 @@ const std::string GREEN  = "\033[32m";
 const std::string YELLOW = "\033[33m";
 const std::string BLUE   = "\033[34m";
 const std::string BOLD   = "\033[1m";
-
+const std::string GOLD = "\033[33m";
 inline void printLine() {
     std::cout << BOLD << "------------------------------------------" << RESET << "\n";
 }

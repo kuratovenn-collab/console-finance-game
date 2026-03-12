@@ -3,6 +3,9 @@
 #include  "Dice.h"
 #include "GamblingEvent.h"
 #include "TrapEvent.h"
+#include "CorpseEvent.h"
+#include "InsiderTradingEvent.h"
+#include "PillEvent.h"
 #include <iostream>
 #include <memory>
 
@@ -25,11 +28,20 @@ void Game::setupBoard() {
     std::mt19937 g(rd());
     std::shuffle(eventTypes.begin(), eventTypes.end(), g);
 
+    for (int i = 1; i < totalCells - 1; ++i) {
+        if (eventTypes[i] == eventTypes[i - 1]) {
+            std::swap(eventTypes[i], eventTypes[i + 1]);
+        }
+    }
+
     for (int type : eventTypes) {
-        if (type == 0 || type == 2 || type == 4) {
-            board.addEvent(std::make_unique<GamblingEvent>("Tavern " + std::to_string(type)));
-        } else {
-            board.addEvent(std::make_unique<TrapEvent>("Danger " + std::to_string(type)));
+        switch (type) {
+            case 0: board.addEvent(std::make_unique<GamblingEvent>("Old Oak Tavern")); break;
+            case 1: board.addEvent(std::make_unique<TrapEvent>("Bandit Ambush")); break;
+            case 2: board.addEvent(std::make_unique<CorpseEvent>("Mysterious Body")); break;
+            case 3: board.addEvent(std::make_unique<InsiderTradingEvent>("Shady Deal")); break;
+            case 4: board.addEvent(std::make_unique<PillEvent>("Unknown Pill")); break;
+            case 5:board.addEvent(std::make_unique<GamblingEvent>("High Stakes Table"));break;
         }
     }
 }
@@ -76,11 +88,12 @@ void Game::processTurn() {
     std::cout << "--------------------\n";
 }
 void Game::checkEnding() {
-    printLine();
+
     if (player.getLives() <= 0) {
         std::cout << RED << BOLD << "=====YOU DIED=====\n" "==YOUR ADVENTURE ENDS HERE==" << RESET << "\n";
     } else {
         std::cout << GREEN << BOLD << "===CONGRATULATIONS!===\n""==YOU REACHED THE END==" << RESET << "\n";
+        std::cout << "You've reached the final destination. The gatekeeper checks your pouch...\n\n";
         int money = player.getMoney();
         if (money < 50){
             std::cout << YELLOW << "THE PENNILESS SURVIVOR:" << RESET << "\n";
