@@ -23,3 +23,29 @@ add_executable(VisualNovelDice
         src/BossEvent.h
         src/BossEvent.cpp
 )
+include(FetchContent)
+
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/refs/heads/main.zip
+)
+
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_executable(
+        tests
+        tests/test.cpp
+        src/Player.cpp
+        src/Dice.cpp
+)
+
+target_link_libraries(
+        tests
+        gtest_main
+)
+
+include(GoogleTest)
+
+gtest_discover_tests(tests)
