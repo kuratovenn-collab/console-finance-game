@@ -8,7 +8,6 @@
 #include "PillEvent.h"
 #include <iostream>
 #include <memory>
-
 #include <vector>
 #include <algorithm>
 #include <cstdlib>
@@ -65,7 +64,7 @@ void Game::run() {
     checkEnding();
 }
 void Game::processTurn() {
-
+    UI_H::drawBoard(player.getPosition(), 16);
     std::cout << "\nPress Enter to roll dice...";
     std::cin.get();
     int roll = Dice::roll();
@@ -97,21 +96,21 @@ void Game::checkEnding() {
         int money = player.getMoney();
         if (money < 50){
             std::cout << YELLOW << "THE PENNILESS SURVIVOR:" << RESET << "\n";
-        std::cout << "You survived, but at what cost? You don't even have enough gold\n";
-        std::cout << "to buy a decent meal. You'll probably end up cleaning tavern stables\n";
-        std::cout << "to pay off your debts. At least you're alive (mostly).\n";
+        UI_H::typeWrite("You survived, but at what cost? You don't even have enough gold");
+        UI_H::typeWrite("to buy a decent meal. You'll probably end up cleaning tavern stables");
+        UI_H::typeWrite("to pay off your debts. At least you're alive (mostly).");
         }
         else if (money < 150) {
             std::cout << BLUE << "THE HUMBLE MERCHANT:" << RESET << "\n";
-            std::cout << "A solid result! You have enough gold to rent a room and start\n";
-            std::cout << "a small business. You didn't become a king, but you didn't\n";
-            std::cout << "starve either. A perfectly balanced statistical outcome.\n";
+            UI_H::typeWrite( "A solid result! You have enough gold to rent a room and start");
+            UI_H::typeWrite("a small business. You didn't become a king, but you didn't");
+            UI_H::typeWrite("starve either. A perfectly balanced statistical outcome.");
         }
         else {
             std::cout << GOLD << "THE TECH MOGUL OF THE REALM:" << RESET << "\n";
-            std::cout << "Unbelievable! With this much gold, you could buy the entire\n";
-            std::cout << "kingdom (or at least a high-end GPU). Bards will sing songs\n";
-            std::cout << "about your wealth and your incredible luck with the dice!\n";
+            UI_H::typeWrite("Unbelievable! With this much gold, you could buy the entire");
+            UI_H::typeWrite("kingdom (or at least a high-end GPU). Bards will sing songs");
+            UI_H::typeWrite("about your wealth and your incredible luck with the dice!");
         }
     }
 }
