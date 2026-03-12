@@ -3,10 +3,11 @@
 //
 
 #include "Dice.h"
-#include <cstdlib>
-#include <ctime>
+#include <random>
 
 int Dice::roll() {
-    std::srand(std::time(nullptr));
-    return std::rand() % 6 + 1;
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::uniform_int_distribution<> dist(1,6);
+    return dist(gen);
 }

@@ -13,7 +13,6 @@
 class Board {
 private:
     std::vector<std::unique_ptr<Event>> events;
-	int lastEventID = -1;
 public:
     Board() = default;
 

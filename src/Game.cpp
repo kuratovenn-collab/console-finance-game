@@ -6,6 +6,7 @@
 #include "CorpseEvent.h"
 #include "InsiderTradingEvent.h"
 #include "PillEvent.h"
+#include "BossEvent.h"
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -32,7 +33,6 @@ void Game::setupBoard() {
             std::swap(eventTypes[i], eventTypes[i + 1]);
         }
     }
-
     for (int type : eventTypes) {
         switch (type) {
             case 0: board.addEvent(std::make_unique<GamblingEvent>("Old Oak Tavern")); break;
@@ -40,7 +40,7 @@ void Game::setupBoard() {
             case 2: board.addEvent(std::make_unique<CorpseEvent>("Mysterious Body")); break;
             case 3: board.addEvent(std::make_unique<InsiderTradingEvent>("Shady Deal")); break;
             case 4: board.addEvent(std::make_unique<PillEvent>("Unknown Pill")); break;
-            case 5:board.addEvent(std::make_unique<GamblingEvent>("High Stakes Table"));break;
+            case 5: board.addEvent(std::make_unique<BossEvent>("!!!DANGER!!!"));break;
         }
     }
 }
@@ -55,7 +55,7 @@ void Game::run() {
         processTurn();
 
         if (player.getLives() <= 0) {
-            std::cout << "You lost all lives! Restarting from beginning...\n";
+            std::cout << "You lost all lives!\n";
             ///player.reset();
             break;
         }
