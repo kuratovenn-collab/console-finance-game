@@ -3,9 +3,11 @@
 #include  "Dice.h"
 #include "GamblingEvent.h"
 #include "TrapEvent.h"
+#include "CorpseEvent.h"
+#include "InsiderTradingEvent.h"
+#include "PillEvent.h"
 #include <iostream>
 #include <memory>
-
 #include <vector>
 #include <algorithm>
 #include <cstdlib>
@@ -25,11 +27,20 @@ void Game::setupBoard() {
     std::mt19937 g(rd());
     std::shuffle(eventTypes.begin(), eventTypes.end(), g);
 
+    for (int i = 1; i < totalCells - 1; ++i) {
+        if (eventTypes[i] == eventTypes[i - 1]) {
+            std::swap(eventTypes[i], eventTypes[i + 1]);
+        }
+    }
+
     for (int type : eventTypes) {
-        if (type == 0 || type == 2 || type == 4) {
-            board.addEvent(std::make_unique<GamblingEvent>("Tavern " + std::to_string(type)));
-        } else {
-            board.addEvent(std::make_unique<TrapEvent>("Danger " + std::to_string(type)));
+        switch (type) {
+            case 0: board.addEvent(std::make_unique<GamblingEvent>("Old Oak Tavern")); break;
+            case 1: board.addEvent(std::make_unique<TrapEvent>("Bandit Ambush")); break;
+            case 2: board.addEvent(std::make_unique<CorpseEvent>("Mysterious Body")); break;
+            case 3: board.addEvent(std::make_unique<InsiderTradingEvent>("Shady Deal")); break;
+            case 4: board.addEvent(std::make_unique<PillEvent>("Unknown Pill")); break;
+            case 5:board.addEvent(std::make_unique<GamblingEvent>("High Stakes Table"));break;
         }
     }
 }
@@ -53,7 +64,7 @@ void Game::run() {
     checkEnding();
 }
 void Game::processTurn() {
-
+    UI_H::drawBoard(player.getPosition(), 16);
     std::cout << "\nPress Enter to roll dice...";
     std::cin.get();
     int roll = Dice::roll();
@@ -76,17 +87,30 @@ void Game::processTurn() {
     std::cout << "--------------------\n";
 }
 void Game::checkEnding() {
-    printLine();
+
     if (player.getLives() <= 0) {
         std::cout << RED << BOLD << "=====YOU DIED=====\n" "==YOUR ADVENTURE ENDS HERE==" << RESET << "\n";
     } else {
         std::cout << GREEN << BOLD << "===CONGRATULATIONS!===\n""==YOU REACHED THE END==" << RESET << "\n";
+        std::cout << "You've reached the final destination. The gatekeeper checks your pouch...\n\n";
         int money = player.getMoney();
-        if (money < 50)
-            std::cout << "poor.\n";
-        else if (money < 150)
-            std::cout << "not poor.\n";
-        else
-            std::cout << "rich\n";
+        if (money < 50){
+            std::cout << YELLOW << "THE PENNILESS SURVIVOR:" << RESET << "\n";
+        UI_H::typeWrite("You survived, but at what cost? You don't even have enough gold");
+        UI_H::typeWrite("to buy a decent meal. You'll probably end up cleaning tavern stables");
+        UI_H::typeWrite("to pay off your debts. At least you're alive (mostly).");
+        }
+        else if (money < 150) {
+            std::cout << BLUE << "THE HUMBLE MERCHANT:" << RESET << "\n";
+            UI_H::typeWrite( "A solid result! You have enough gold to rent a room and start");
+            UI_H::typeWrite("a small business. You didn't become a king, but you didn't");
+            UI_H::typeWrite("starve either. A perfectly balanced statistical outcome.");
+        }
+        else {
+            std::cout << GOLD << "THE TECH MOGUL OF THE REALM:" << RESET << "\n";
+            UI_H::typeWrite("Unbelievable! With this much gold, you could buy the entire");
+            UI_H::typeWrite("kingdom (or at least a high-end GPU). Bards will sing songs");
+            UI_H::typeWrite("about your wealth and your incredible luck with the dice!");
+        }
     }
 }
