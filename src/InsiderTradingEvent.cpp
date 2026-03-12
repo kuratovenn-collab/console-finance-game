@@ -33,6 +33,8 @@ bool InsiderTradingEvent::play(Player& player) {
         std::cout << "2. Walk away"<<"\n";
         std::cout<< "Your choice (1 or 2): "<< "\n";
         if (std::cin >> choice) {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
             if (choice == 1) {
                 if (player.getMoney() < INFO_COST) {
                     std::cout << "You don't even have enough for a common pebble. Begone" <<"\n";
