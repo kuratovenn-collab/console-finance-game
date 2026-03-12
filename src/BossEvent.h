@@ -9,11 +9,11 @@
 #include "Player.h"
 #include <string>
 
-class BossMariaEvent : public Event {
+class BossEvent : public Event {
 private:
     std::string title;
 public:
-    explicit BossMariaEvent(std::string t);
+    explicit BossEvent(std::string t);
     bool play(Player& player) override;
     std::string getTitle() const override;
 };
