@@ -17,8 +17,8 @@ std::optional<int> InsiderTradingEvent::getInsiderProfit() {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> d100(1, 100);
 
-    if (d100(gen) <= WIN_CHANCE) {
-        return INFO_COST * 2.5;
+    if (d100(gen) <= winChance) {
+        return infoCost * 2.5;
     }
     return std::nullopt;
 }
@@ -28,7 +28,7 @@ bool InsiderTradingEvent::play(Player& player) {
     int choice;
     while (true) {
         std::cout << "A masked figure emerges from the shadows: 'The Heart Diamond will soon change hands.\n";
-        std::cout << "For " << INFO_COST << " gold, I will show you the right safe. It's not magic, it's a sleight of hand.'\n";
+        std::cout << "For " << infoCost << " gold, I will show you the right safe. It's not magic, it's a sleight of hand.'\n";
         std::cout << "1. Buy the information"<<"\n";
         std::cout << "2. Walk away"<<"\n";
         std::cout<< "Your choice (1 or 2): "<< "\n";
@@ -36,11 +36,11 @@ bool InsiderTradingEvent::play(Player& player) {
             std::cin.clear();
             std::cin.ignore(1000, '\n');
             if (choice == 1) {
-                if (player.getMoney() < INFO_COST) {
+                if (player.getMoney() < infoCost) {
                     std::cout << "You don't even have enough for a common pebble. Begone" <<"\n";
                     return true;
                 }
-                player.spendMoney(INFO_COST);
+                player.spendMoney(infoCost);
                 std::cout << "You hand over the coins. The figure whispers a combination and vanishes instantly"<<"\n";
                 break;
             } else if (choice == 2) {

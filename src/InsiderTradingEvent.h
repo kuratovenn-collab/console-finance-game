@@ -14,8 +14,8 @@
 class InsiderTradingEvent : public Event {
 private:
     std::string title;
-    static constexpr int INFO_COST = 35;
-    static constexpr int WIN_CHANCE = 60;
+    const int infoCost = 38;
+    const int winChance = 55;
     std::optional<int> getInsiderProfit();
 public:
     explicit InsiderTradingEvent(std::string t);

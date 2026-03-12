@@ -20,4 +20,5 @@ add_executable(VisualNovelDice
         src/PillEvent.h
         src/InsiderTradingEvent.h
         src/InsiderTradingEvent.cpp
+        src/BossMariaEvent.h
 )
