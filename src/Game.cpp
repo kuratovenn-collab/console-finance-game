@@ -82,11 +82,23 @@ void Game::checkEnding() {
     } else {
         std::cout << GREEN << BOLD << "===CONGRATULATIONS!===\n""==YOU REACHED THE END==" << RESET << "\n";
         int money = player.getMoney();
-        if (money < 50)
-            std::cout << "poor.\n";
-        else if (money < 150)
-            std::cout << "not poor.\n";
-        else
-            std::cout << "rich\n";
+        if (money < 50){
+            std::cout << YELLOW << "THE PENNILESS SURVIVOR:" << RESET << "\n";
+        std::cout << "You survived, but at what cost? You don't even have enough gold\n";
+        std::cout << "to buy a decent meal. You'll probably end up cleaning tavern stables\n";
+        std::cout << "to pay off your debts. At least you're alive (mostly).\n";
+        }
+        else if (money < 150) {
+            std::cout << BLUE << "THE HUMBLE MERCHANT:" << RESET << "\n";
+            std::cout << "A solid result! You have enough gold to rent a room and start\n";
+            std::cout << "a small business. You didn't become a king, but you didn't\n";
+            std::cout << "starve either. A perfectly balanced statistical outcome.\n";
+        }
+        else {
+            std::cout << GOLD << "THE TECH MOGUL OF THE REALM:" << RESET << "\n";
+            std::cout << "Unbelievable! With this much gold, you could buy the entire\n";
+            std::cout << "kingdom (or at least a high-end GPU). Bards will sing songs\n";
+            std::cout << "about your wealth and your incredible luck with the dice!\n";
+        }
     }
 }
