@@ -1,5 +1,5 @@
-#include "Player.h"
-#include "Exceptions.h"
+#include "../include/Player.h"
+#include "../include/Exceptions.h"
 Player::Player(std::string n, int startMoney, int startLives)
     : name(std::move(n)), money(startMoney), position(0),lives(startLives) {}
 

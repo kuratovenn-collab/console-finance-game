@@ -2,7 +2,7 @@
 // Created by Air MT on 12.03.2026.
 //
 
-#include "InsiderTradingEvent.h"
+#include "../include/InsiderTradingEvent.h"
 #include <iostream>
 #include <random>
 #include <variant>

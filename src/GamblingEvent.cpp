@@ -2,7 +2,7 @@
 // Created by Максим Богини on 06.03.2026.
 //
 
-#include "GamblingEvent.h"
+#include "../include/GamblingEvent.h"
 #include <iostream>
 
 GamblingEvent::GamblingEvent(std::string t, int bet)

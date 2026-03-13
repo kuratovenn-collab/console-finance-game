@@ -13,13 +13,13 @@ add_executable(VisualNovelDice
         src/Player.cpp
         src/GamblingEvent.cpp
         src/TrapEvent.cpp
-        src/Exceptions.h
+        include/Exceptions.h
         src/CorpseEvent.cpp
-        src/CorpseEvent.h
+        include/CorpseEvent.h
         src/PillEvent.cpp
-        src/PillEvent.h
+        include/PillEvent.h
         src/InsiderTradingEvent.cpp
-        src/BossEvent.h
+        include/BossEvent.h
         src/BossEvent.cpp
 )
 include(FetchContent)

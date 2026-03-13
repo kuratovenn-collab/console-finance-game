@@ -2,7 +2,7 @@
 // Created by Maria Tumasova on 07.03.2026.
 //
 
-#include "TrapEvent.h"
+#include "../include/TrapEvent.h"
 #include <iostream>
 #include <cmath>
 

@@ -2,7 +2,7 @@
 // Created by ASUS on 27.02.2026.
 //
 
-#include "Board.h"
+#include "../include/Board.h"
 #include <memory>
 #include <stdexcept>
 

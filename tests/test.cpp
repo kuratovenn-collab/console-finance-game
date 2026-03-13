@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "../src/Player.h"
-#include "../src/Dice.h"
+#include "../include/Player.h"
+#include "../include/Dice.h"
 
 TEST(PlayerTest, AddMoney) {
 

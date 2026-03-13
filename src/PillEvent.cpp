@@ -2,8 +2,8 @@
 // Created by MT Air on 09.03.2026.
 //
 
-#include "PillEvent.h"
-#include "Event.h"
+#include "../include/PillEvent.h"
+#include "../include/Event.h"
 #include <iostream>
 #include <variant>
 

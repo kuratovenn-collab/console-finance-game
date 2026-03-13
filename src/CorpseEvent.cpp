@@ -2,7 +2,7 @@
 // Created by Максим Богини on 10.03.2026.
 //
 
-#include "CorpseEvent.h"
+#include "../include/CorpseEvent.h"
 #include <iostream>
 #include <random>
 
