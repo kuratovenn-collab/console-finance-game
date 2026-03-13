@@ -30,7 +30,7 @@ bool CorpseEvent::play(Player& player) {
     std::cout << "Do you search it? (1 - Yes, 2 - Leave it): ";
 
     int choice;
-    if (!(std::cin >> choice) || choice != 1) {
+    if (!(std::cin >> choice) || choice == 2) {
         std::cin.clear();
         std::cin.ignore(1000, '\n');
         std::cout << "You wisely step over the body and move on.\n";

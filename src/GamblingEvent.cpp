@@ -15,7 +15,7 @@ bool GamblingEvent::play(Player& player) {
 
     int bet;
     std::cin >> bet;
-
+    std::cin.ignore(1000, '\n');
     if (bet < minBet || bet > player.getMoney()) {
         std::cout << "You dare offer what you do not have, or offer too little? The shadows laugh at you.\n";
         return false;

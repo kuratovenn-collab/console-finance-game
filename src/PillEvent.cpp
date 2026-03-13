@@ -13,7 +13,6 @@ std::string PillEvent::getTitle() const {
 }
 bool PillEvent::play(Player& player) {
     std::cout << "\n=== " << title << " ===\n";
-
     int choice;
     int redPrice = player.getMoney() / 6;
     int blueReward = player.getMoney() / 4;
